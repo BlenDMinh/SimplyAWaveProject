@@ -65,7 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\API\MeshHelper.cs" />
+    <Compile Include="Assets\Scenes\CameraMovement.cs" />
+    <Compile Include="Assets\Scenes\SelectionManager.cs" />
     <Compile Include="Assets\Scenes\WaterControl.cs" />
+    <Compile Include="Assets\Scenes\WaveSource.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Projects/SimplyAWaveProject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -131,6 +134,12 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Projects/SimplyAWaveProject/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>D:/Projects/SimplyAWaveProject/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>D:/Projects/SimplyAWaveProject/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Tools/Coding Tools/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

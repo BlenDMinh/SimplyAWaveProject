@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class WaterControl : MonoBehaviour {
     void Start() {
-        Mesh mesh = MeshHelper.CreateMesh(10, 10);
+        Mesh mesh = MeshHelper.CreateMesh(20, 20);
         for(int i = 0; i < 3; i++)
             MeshHelper.Subdivide(mesh);
         GetComponent<MeshFilter>().mesh = mesh;
     }
 
     [SerializeField]
-    private Text Width, Height, Subdivision;
+    private Text Width = null, Height = null, Subdivision = null;
     public void UpdateMesh() {
         int width = 0, height = 0, subTime = 0;
         if(Width.text != "")
@@ -39,9 +39,10 @@ public class WaterControl : MonoBehaviour {
         Vector3[] vertices = waterMesh.vertices;
         for (int i = 0; i < vertices.Length; i++) {
             float y = 0;
-            foreach (Transform wavesorces in waterPlane) {
-                float f = 5f, v = 5f;
-                y += 0.3f * Mathf.Cos(f * 2 * Mathf.PI * (time / 60) - 2 * Mathf.PI * distance(vertices[i], wavesorces.position) / (v / f));
+            foreach (Transform wavesorce in waterPlane) {
+                WaveSource source = wavesorce.GetComponent<WaveSource>();
+                float A = source.amplitude, f = source.frequency, v = source.velocity, phi = source.phi;
+                y += A * Mathf.Cos(f * 2 * Mathf.PI * (time / 10) - 2 * Mathf.PI * distance(vertices[i], wavesorce.position) / (v / f) + phi);
             }
             vertices[i] = new Vector3(vertices[i].x, y, vertices[i].z);
         }

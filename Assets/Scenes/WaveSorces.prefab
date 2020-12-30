@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44af62d8dec68d64eaac5b5b23517921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   amplitude: 0.3
   frequency: 5
   velocity: 5
@@ -98,9 +99,7 @@ PositionConstraint:
   m_AffectTranslationZ: 0
   m_IsContraintActive: 1
   m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
+  m_Sources: []
 --- !u!64 &2169523548120182050
 MeshCollider:
   m_ObjectHideFlags: 0

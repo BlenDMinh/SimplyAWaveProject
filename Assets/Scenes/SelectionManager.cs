@@ -1,37 +1,27 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class SelectionManager : MonoBehaviour
-{
-    [SerializeField] private string selectableTag = "Selectable";
-    [SerializeField] private Material highlightMaterial;
-    [SerializeField] private Material defaultMaterial;
+public class SelectionManager : MonoBehaviour {
 
-    private Transform _selection;
-    
-    private void Update()
-    {
-        if (_selection != null)
-        {
-            var selectionRenderer = _selection.GetComponent<Renderer>();
-            selectionRenderer.material = defaultMaterial;
-            _selection = null;
-        }
-        
+    private Text Selection;
+    private void Start() {
+        Selection = GameObject.Find("Selection").GetComponent<Text>();
+    }
+    private void Update() {
+        if (!Input.GetMouseButtonDown(0))
+            return;
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            var selection = hit.transform;
-            if (selection.CompareTag(selectableTag))
-            {
-                var selectionRenderer = selection.GetComponent<Renderer>();
-                if (selectionRenderer != null)
-                {
-                    selectionRenderer.material = highlightMaterial;
-                }
+        if (Physics.Raycast(ray, out hit)) {
+            var selection = hit.transform.gameObject;
+            if (!selection.GetComponent<WaveSource>())
+                Selection.text = "None";
+            else {
+                Selection.text = selection.GetComponent<WaveSource>().name;
 
-                _selection = selection;
             }
+        } else {
+            Selection.text = "None";
         }
     }
 }
